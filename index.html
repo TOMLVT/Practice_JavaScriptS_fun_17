@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container_select {
+            width: 400px;
+            padding: 20px;
+        }
+
+        #selectField {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border: 1px solid grey;
+            padding: 10px;
+        }
+        i {
+            font-size: 22px;
+            transition: transform 0.5s;
+        }
+        #list {
+            width: 100%;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            color: #fff;
+        }
+        .options {
+            width: 100%;
+            padding: 15px;
+            list-style: none;
+        }
+        .options:hover {
+            background-color: #fff;
+            color: #333;
+        }
+        .hide {
+            visibility: hidden;
+        }
+        .rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+        <div class="container">
+            <div class="container_select">
+                <div id="selectField">
+                    <p id="selectText">Select Social Media</p>
+                    <i class="fa-solid fa-caret-down" id="arrowIcon"></i>
+                </div>
+
+                <ul id="list" class="hide">
+                    <li class="options">Youtube</li>
+                    <li  class="options">FaceBook</li>
+                    <li  class="options">WhatsApp</li>
+                    <li  class="options">Instagram</li>
+                    <li  class="options">Twitter</li>
+                </ul>
+
+            </div>
+        </div>
+
+    <script>
+         var selectField = document.getElementById('selectField')
+         var selectText = document.getElementById('selectText')
+         var options = document.getElementsByClassName('options')
+         var list = document.getElementById('list')
+         var arrowIcon = document.getElementById('arrowIcon')
+
+         selectField.onclick = function() {
+            list.classList.toggle('hide')
+            arrowIcon.classList.toggle('rotate') // xoay lên 
+         }
+
+         for (let option of options) {
+            option.onclick = function() {
+                  selectText.innerHTML = this.textContent
+                  list.classList.add('hide')
+                  arrowIcon.classList.remove('rotate') // xoay về khi chọn xong 
+            }
+         }
+    </script>
+</body>
+</html>
